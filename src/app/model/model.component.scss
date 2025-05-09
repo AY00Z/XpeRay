@@ -1,0 +1,329 @@
+@use '../../styles/shared-variables' as vars;
+
+/* Main container styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: vars.$gradient-01;
+  padding: 40px;
+}
+
+/* Content wrapper - initially centers the form */
+.content-wrapper {
+  display: flex;
+  justify-content: center; /* Center initially */
+  width: 100%;
+  max-width: 1500px;
+  
+  /* When analysis exists, show side-by-side */
+  &.has-analysis {
+    justify-content: space-between; /* Space between form and results */
+    gap: 50px;
+  }
+}
+
+/* Login card styles */
+.login-card {
+  background: rgba(255, 255, 255, 0.15);
+  width: 100%;
+  max-width: 850px;
+  padding: 70px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-out;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  color: white;
+  
+  /* When analysis exists, make form narrower */
+  .has-analysis & {
+    max-width: 600px;
+  }
+}
+
+/* Analysis result - initially hidden */
+.analysis-result {
+  display: none;
+  background: rgba(255, 255, 255, 0.15);
+  width: 100%;
+  max-width: 800px;
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  color: white;
+  animation: fadeIn 0.5s ease-out;
+  
+  /* When analysis exists, show it */
+  .has-analysis & {
+    display: block;
+  }
+}
+
+/* Rest of your existing styles... */
+.login-title {
+  color: vars.$primary-dark;
+  font-family: 'Arial', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-subtitle {
+  color: vars.$primary-dark;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  margin-bottom: 50px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+  label {
+    color: vars.$primary-dark;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    color: vars.$primary-dark;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    }
+    
+    &.invalid {
+      border-color: #e74c3c;
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.3);
+    }
+    
+    &::placeholder {
+      color: vars.$primary-dark;
+    }
+  }
+}
+
+.preview-container {
+  margin-top: 25px;
+  text-align: center;
+  
+  .image-preview {
+    max-width: 100%;
+    max-height: 450px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.form-error {
+  background: rgba(231, 76, 60, 0.25);
+  border-left: 5px solid #e74c3c;
+  padding: 25px;
+  margin-bottom: 35px;
+  color: vars.$primary-dark;
+  border-radius: 8px;
+  
+  p {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 20px;
+    
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+  }
+}
+
+.login-button {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: vars.$primary-dark;
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+}
+
+.analysis-result {
+  h3 {
+    color: vars.$primary-dark;
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  pre {
+    color: vars.$primary-dark;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1200px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    
+    &.has-analysis {
+      .login-card, .analysis-result {
+        max-width: 800px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+  
+  .login-card, .analysis-result {
+    padding: 50px 30px;
+  }
+  
+  .login-title {
+    font-size: 36px;
+  }
+  
+  .login-subtitle {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card, .analysis-result {
+    padding: 40px 20px;
+    border-radius: 15px;
+  }
+  
+  .login-title {
+    font-size: 30px;
+  }
+  
+  .login-subtitle {
+    font-size: 18px;
+  }
+  
+  .form-group {
+    label {
+      font-size: 18px;
+    }
+    
+    input, select {
+      padding: 15px;
+      font-size: 16px;
+    }
+  }
+  
+  .login-button {
+    font-size: 18px;
+    padding: 16px;
+  }
+  
+  .analysis-result {
+    h3 {
+      font-size: 28px;
+    }
+    
+    pre {
+      font-size: 16px;
+      padding: 15px;
+    }
+  }
+}

@@ -1,0 +1,227 @@
+@use '../../styles/shared-variables' as vars;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: vars.$gradient-01;
+  padding: 20px;
+}
+
+.login-card {
+  @include vars.form-container;
+  width: 100%;
+  max-width: 600px;
+  height: 580px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  @include vars.form-animation;
+  color: vars.$primary-dark;
+  font-family: vars.$font-01;
+  font-size: 33px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.login-subtitle {
+  @include vars.form-animation;
+  color: vars.$text-dark;
+  font-family: vars.$font-01;
+  font-size: 19px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.login-form {
+  @include vars.line-animation;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  label {
+    color: vars.$text-dark;
+    font-family: vars.$font-01;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  input {
+    @include vars.form-input;
+    width: 520px;
+    height: 45px;
+
+    &::placeholder {
+      color: vars.$primary-dark; // Using your red variable
+      opacity: 1; // Ensure full opacity
+      font-family: vars.$font-01;
+      font-size: 14px;
+    }
+    
+    
+    
+    &.invalid {
+      border-color: vars.$primary-dark;
+      box-shadow: 0 0 0 3px rgba(vars.$primary-dark, 0.2);
+    }
+  }
+}
+
+.password-input-container {
+  position: relative;
+  
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: vars.$text-dark;
+    
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  
+
+}
+
+.login-button {
+  @include vars.form-animation;
+  background-color: vars.$text-dark;
+  color: white;
+  font-family: vars.$font-01;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  
+  &:hover {
+    background-color: darken(vars.$text-dark, 10%);
+  }
+  
+  &:disabled {
+    background-color: lighten(vars.$text-dark, 20%);
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+}
+
+.signup-link {
+  margin-top: 30px;
+  text-align: center;
+  color: vars.$text-dark;
+  font-family: vars.$font-01;
+  font-size: 14px;
+  
+  a {
+    color: vars.$text-dark;
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.error-message {
+  color: vars.$text-dark;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+// Keyframes for animations
+@keyframes text {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes line {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Icons
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-eye {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+.icon-eye-off {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'%3E%3C/path%3E%3Cline x1='1' y1='1' x2='23' y2='23'%3E%3C/line%3E%3C/svg%3E");
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+  }
+}

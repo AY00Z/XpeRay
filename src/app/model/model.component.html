@@ -1,0 +1,50 @@
+<div class="login-container">
+    <div class="content-wrapper" [class.has-analysis]="analysisResult">
+      <div class="login-card">
+        <h1 class="login-title">XpeRay Analysis</h1>
+        <div class="login-subtitle">Upload your medical scan for AI-powered analysis</div>
+  
+        <div *ngIf="submitted && scanForm.invalid" class="form-error">
+          <p>Please correct the following errors:</p>
+          <ul>
+            <li *ngIf="f['scanImage'].errors?.['required']">Scan image is required</li>
+            <li *ngIf="f['scanImage'].errors?.['invalidType']">Only JPEG or PNG images allowed</li>
+            <li *ngIf="f['scanImage'].errors?.['invalidSize']">File size must be less than 5MB</li>
+          </ul>
+        </div>
+  
+        <form [formGroup]="scanForm" class="login-form">
+          <div class="form-group">
+            <label for="scan-upload">Medical Scan Image</label>
+            <input 
+              type="file" 
+              id="scan-upload" 
+              accept="image/*"
+              (change)="onFileSelected($event)"
+              [class.invalid]="submitted && f['scanImage'].errors"
+              required
+            >
+            
+            <div *ngIf="imagePreview" class="preview-container">
+              <img [src]="imagePreview" alt="Scan preview" class="image-preview">
+            </div>
+          </div>
+          
+          <button 
+            type="button" 
+            class="login-button" 
+            (click)="generateDescription()"
+            [disabled]="loading"
+          >
+            <span *ngIf="!loading">Generate Analysis</span>
+            <span *ngIf="loading" class="spinner"></span>
+          </button>
+        </form>
+      </div>
+  
+      <div *ngIf="analysisResult" class="analysis-result">
+        <h3>AI Analysis Report</h3>
+        <pre>{{ analysisResult }}</pre>
+      </div>
+    </div>
+  </div>

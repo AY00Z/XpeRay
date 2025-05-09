@@ -1,0 +1,48 @@
+<div class="patient-table-container">
+  <h2>Patient Records</h2>
+  
+  <div class="patient-table">
+    <div class="table-header">
+      <div class="header-cell">Patient</div>
+      <div class="header-cell">XpeRay Interpretation</div>
+      <div class="header-cell">Last Visit</div>
+      <div class="header-cell">Actions</div>
+    </div>
+    
+    <div class="table-row" *ngFor="let patient of patients">
+      <div class="table-cell patient-info">
+        <img [src]="patient.imageUrl" [alt]="patient.name" class="patient-avatar">
+        <span>{{ patient.name }}</span>
+      </div>
+      <div class="table-cell description">{{ patient.xrayDescription }}</div>
+      <div class="table-cell last-visit">{{ patient.lastVisit }}</div>
+      <div class="table-cell actions">
+        <div class="action-buttons">
+          <button class="xray-button" (click)="viewXRay(patient)">
+            Open Scan
+           
+          </button>
+          <button class="modify-button" (click)="modifyPatient(patient)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- X-Ray Viewer Modal -->
+<div class="modal-overlay" *ngIf="showXRayModal" (click)="closeModal()">
+  <div class="xray-modal" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="closeModal()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="xray-image-container">
+      <img [src]="selectedXRayImage" alt="X-Ray Image" class="xray-image">
+    </div>
+    <div class="patient-info">
+      <h3>{{ selectedPatient?.name }}</h3>
+      <p>Last Visit: {{ selectedPatient?.lastVisit }}</p>
+    </div>
+  </div>
+</div>

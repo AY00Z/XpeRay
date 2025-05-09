@@ -1,0 +1,23 @@
+<div class="patient-card">
+    <div class="patient-header">
+      <img [src]="patient.imageUrl" [alt]="patient.name" class="patient-avatar">
+      <h3>{{ patient.name }}</h3>
+    </div>
+    
+    <div class="patient-content">
+      <div class="xray-description">
+        <p>{{ patient.xrayDescription }}</p>
+      </div>
+      
+      <div class="patient-actions">
+        <a [href]="patient.pdfUrl" target="_blank" class="pdf-button">
+          <mat-icon>picture_as_pdf</mat-icon>
+          View X-Ray PDF
+        </a>
+        <div class="last-visit">
+          <mat-icon>calendar_today</mat-icon>
+          {{ patient.lastVisit }}
+        </div>
+      </div>
+    </div>
+  </div>

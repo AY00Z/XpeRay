@@ -1,0 +1,125 @@
+@use '../../styles/_shared-variables' as vars;
+
+.dashboard-container {
+  padding: 20px;
+  font-family: vars.$font-01;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  height: 180px;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    h3 {
+      margin: 0;
+      color: vars.$text-dark;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    mat-icon {
+      color: vars.$text-dark;
+      font-size: 30px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    margin-top: 9px;
+    font-weight: 600;
+    color: vars.$text-dark;
+    margin-bottom: 5px;
+  }
+
+  .metric-change {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 5px;
+    margin-top: 30px;
+
+    &.positive {
+      color: #f79502;
+    }
+
+    &.negative {
+      color: #F44336;
+    }
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.chart-container {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 730px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: vars.$text-dark;
+    font-size: 27px;
+    font-weight: 500;
+    margin-left: 520px;
+    color: vars.$text-dark;
+  }
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 755px;
+  width: 1300px;
+  margin-left: 150px;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 150px;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: vars.$text-dark;
+  }
+
+  .legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 8px;
+  }
+}

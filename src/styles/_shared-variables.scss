@@ -1,0 +1,54 @@
+// Colors
+$olive-green: #5a6029;
+$text-dark: #2c3e50;
+$placeholder-red: #ff0000;
+$primary-dark: #26415E;
+$primary-light: #e7f0fd;
+$ice-crystal:#F0F5FC;
+ // Gradients
+ $gradient-01: linear-gradient(to top, $primary-dark 0%, $primary-light 100%);
+
+// Fonts
+$font-01: 'Arial', sans-serif; // Make sure this matches your actual font
+
+// Spacing
+$input-width: 400px;
+$input-padding: 12px 16px;
+$select-width: 500px;
+
+// Animations
+@mixin form-animation {
+  animation: text 0.8s 0.6s ease backwards;
+}
+
+@mixin line-animation {
+  animation: line 0.8s 0.6s ease backwards;
+}
+
+// Form Styles
+@mixin form-container {
+  background-color: rgba(white, 0.2);
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+@mixin form-input {
+  padding: $input-padding;
+  border: 1px solid $text-dark;
+  border-radius: 6px;
+  background: rgba(white, 0.8);
+  color: $text-dark;
+  font-family: $font-01;
+  transition: all 0.3s ease;
+  
+  &::placeholder {
+    color: $placeholder-red;
+    opacity: 1;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $olive-green;
+    box-shadow: 0 0 0 3px rgba($olive-green, 0.2);
+  }
+}

@@ -1,0 +1,193 @@
+/* 
+ * XpeRay Header Component Styles
+ * Cleaned version with login button only
+ */
+
+/* 
+ * 1. FONT IMPORTS & VARIABLES
+ */
+ @use '../../styles/shared-variables' as vars;
+ @import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+
+ // Font family
+ $font-01: "Raleway", sans-serif;
+ 
+ // Color Palette
+ $primary-dark: #26415E;
+ $primary-light: #e7f0fd;
+ $accent-green: #29ba0b;
+ $text-dark: #0B1B32;
+ $text-light: #FFFFFF;
+ 
+ // Gradients
+ $gradient-01: linear-gradient(to top, $primary-dark 0%, $primary-light 100%);
+ 
+ /* 
+  * 2. LOGIN BUTTON
+  * Positioned top-right
+  */
+  
+  .login-container {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    z-index: 100;
+  
+    .login-button {
+      padding: 12px 32px; /* Matches .cta padding */
+      text-decoration: none;
+      color: inherit;
+      background: transparent;
+      border: 1px solid rgba($text-dark, 0.4); /* Matches .cta border */
+      color: $text-dark; /* Matches .cta text color */
+      border-radius: 6px; /* Remove rounded corners to match */
+      font-family: $font-01;
+      text-transform: uppercase; /* Added to match */
+      letter-spacing: 2px; /* Added to match */
+      font-weight: 600;
+      font-size: 17px; /* Adjusted to match */
+      cursor: pointer;
+      transition: all 0.4s ease; /* Matches .cta transition */
+      backdrop-filter: none; /* Removed to match */
+      
+      /* Exact hover effects as .cta */
+      &:hover {
+        border: 1px solid rgba($text-dark, 0.1);
+        box-shadow: inset 0px -80px 0px rgba($text-dark, 0.1);
+        transform: translateY(-5px);
+        background-color: #0B1B32;
+        color: white;
+        border-color: white;
+      }
+    }
+  }
+ /* 
+  * 3. HERO SECTION
+  * Main content area
+  */
+ .mainHeading {
+   width: 100%;
+   height: 100vh;
+   position: relative;
+   padding: 0 40px;
+   background-image: $gradient-01;
+   overflow: hidden;
+   margin-top: -5px;
+ 
+   &__content {
+     max-width: 1110px;
+     min-height: 600px;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     padding-top: 40px; // Reduced since nav is removed
+     margin-top: 60px;
+   }
+ 
+   &__text {
+     z-index: 1;
+     color: $text-dark;
+     background-color: rgba(white, 0.2);
+     padding: 40px;
+     max-width: 620px;
+     margin-top: 100px;
+     width: 70%;
+     backdrop-filter: blur(8px);
+     animation: text 0.8s 0.6s ease backwards;
+     position: relative;
+     
+     &:before {
+       content: "";
+       position: absolute;
+       width: 5px;
+       height: 100%;
+       background-color: rgba(white, 0.5);
+       top: 0;
+       left: 0;
+       animation: line 0.8s 0.6s ease backwards;
+     }
+ 
+     @keyframes text {
+       0% { opacity: 0; transform: translateX(200px); }
+     }
+     @keyframes line {
+       0% { right: 0; width: 100%; opacity: 0; }
+     }
+   }
+ 
+   &__preTitle {
+     text-transform: uppercase;
+     font-weight: 600;
+     letter-spacing: 2px;
+     margin-bottom: 16px;
+     color: $text-dark;
+   }
+ 
+   &__title {
+     text-transform: uppercase;
+     font-weight: 200;
+     letter-spacing: 2px;
+     margin-bottom: 24px;
+     font-size: 40px;
+   }
+ 
+   &__description {
+     letter-spacing: 0.5px;
+     font-size: 16px;
+     line-height: 26px;
+   }
+ 
+   &__image {
+     right: 0;
+     max-width: 600px;
+     width: 60%;
+     height: 600px;
+     transform: translatey(100px);
+     position: absolute;
+     overflow: hidden;
+     animation: image 0.6s 0.2s ease backwards;
+ 
+     @keyframes image {
+       0% { opacity: 0; transform: translatey(200px); }
+     }
+ 
+     &:before {
+       animation: imageBefore 1s 0.2s ease backwards;
+       @keyframes imageBefore {
+         0% { height: 100%; top: 0; }
+       }
+     }
+ 
+     img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+     }
+   }
+ }
+ 
+ /* 
+  * 4. CALL-TO-ACTION BUTTON
+  */
+ .login-button {
+   padding: 16px 32px;
+   color: $text-dark;
+   background-color: transparent;
+   border: 1px solid rgba($text-dark, 0.4);
+   font-family: $font-01;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   font-weight: 600;
+   margin-top: 32px;
+   cursor: pointer;
+   transition: all 0.4s ease;
+ 
+   &:hover {
+     border: 1px solid rgba($text-dark, 0.1);
+     box-shadow: inset 0px -80px 0px rgba($text-dark, 0.1);
+     transform: translateY(-5px);
+   }
+ }

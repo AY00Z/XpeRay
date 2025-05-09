@@ -1,0 +1,48 @@
+<div class="patient-table-container">
+  <div class="header-container">
+    <h2>User Management</h2>
+    
+  </div>
+  
+  <div class="patient-table">
+    <div class="table-header">
+      <div class="header-cell">User</div>
+      <div class="header-cell">Email</div>
+      <div class="header-cell">Location</div>
+      <div class="header-cell">Status</div>
+      <div class="header-cell">Actions</div>
+    </div>
+    
+    <div class="table-row" *ngFor="let user of users">
+      <div class="table-cell patient-info">
+        <img [src]="user.imageUrl" [alt]="user.fullName" class="patient-avatar">
+        <span>{{ user.fullName }}</span>
+      </div>
+      <div class="table-cell description">{{ user.email }}</div>
+      <div class="table-cell last-visit">{{ user.location }}</div>
+      <div class="table-cell status">
+        <span class="status-badge" [class.active]="user.active">
+          {{ user.active ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+      <div class="table-cell actions">
+        <button class="delete-button" (click)="deleteUser(user)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal 
+<div class="modal-overlay" *ngIf="showConfirmModal" (click)="closeModal()">
+  <div class="xray-modal confirm-modal" (click)="$event.stopPropagation()">
+    <h3>{{ confirmModalTitle }}</h3>
+    <p>{{ confirmModalMessage }}</p>
+    <div class="modal-actions">
+      <button class="cancel-button" (click)="closeModal()">Cancel</button>
+      <button class="confirm-button" (click)="confirmAction()">Confirm</button>
+    </div>
+  </div>
+</div> -->

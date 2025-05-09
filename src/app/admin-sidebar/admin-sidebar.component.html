@@ -1,0 +1,30 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+      <h2>Admin Panel</h2>
+    </div>
+    
+    <div class="sidebar-menu">
+      <ng-container *ngFor="let menu of menuItems">
+        <div class="menu-section">
+          <h3 class="menu-title">{{menu.title}}</h3>
+          <ul class="menu-items">
+            <li *ngFor="let item of menu.items" 
+                [class.active]="item.active"
+                (click)="toggleActive(item)">
+              <mat-icon>{{item.icon}}</mat-icon>
+              <a [routerLink]="item.link" routerLinkActive="active">{{item.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  
+    <!-- Doctor Profile Section -->
+    <div class="doctor-profile">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQHJ94GtPbOFag/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1703446813421?e=1749081600&v=beta&t=m_ODmECeI_ikhzALHNFJdkJ-whgM81Er4F8OApjI08k" alt="Doctor" class="doctor-avatar">
+      <div class="doctor-info">
+        <div class="doctor-name">Aya Boussaid</div>
+        <div class="doctor-title">XpeRay Admin</div>
+      </div>
+    </div>
+  </div>

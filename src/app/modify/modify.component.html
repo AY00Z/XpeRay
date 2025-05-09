@@ -1,0 +1,29 @@
+<!-- modify.component.html -->
+<div class="modify-container">
+  <div class="toolbar">
+    <button (click)="toggleFormat('bold')" [class.active]="isBold">
+      <mat-icon>format_bold</mat-icon>
+    </button>
+    <button (click)="toggleFormat('italic')" [class.active]="isItalic">
+      <mat-icon>format_italic</mat-icon>
+    </button>
+    <button (click)="toggleFormat('underline')" [class.active]="isUnderline">
+      <mat-icon>format_underlined</mat-icon>
+    </button>
+    <input type="color" [(ngModel)]="textColor" (change)="applyFormatting()">
+  </div>
+
+  <textarea
+    [formControl]="editedDescription"
+    class="editable-area"
+    placeholder="Modify the X-ray description...">
+  </textarea>
+
+  <div class="preview" [innerHTML]="safePreview"></div>
+
+  <div class="actions">
+    <button class="save-btn" (click)="saveChanges()">
+      <mat-icon>save</mat-icon> Save Changes
+    </button>
+  </div>
+</div>

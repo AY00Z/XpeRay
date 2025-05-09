@@ -1,0 +1,30 @@
+<div class="sidebar">
+    <div class="sidebar-header">
+      <h2>Doctor Panel</h2>
+    </div>
+    
+    <div class="sidebar-menu">
+      <ng-container *ngFor="let menu of menuItems">
+        <div class="menu-section">
+          <h3 class="menu-title">{{menu.title}}</h3>
+          <ul class="menu-items">
+            <li *ngFor="let item of menu.items" 
+                [class.active]="item.active"
+                (click)="toggleActive(item)">
+              <mat-icon>{{item.icon}}</mat-icon>
+              <a [routerLink]="item.link" routerLinkActive="active">{{item.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </div>
+  
+    <!-- Doctor Profile Section -->
+    <div class="doctor-profile">
+      <img src="https://th.bing.com/th/id/OIP.np21r9L7ib9zt4y9rXgj0wHaFl?w=626&h=472&rs=1&pid=ImgDetMain" alt="Doctor" class="doctor-avatar">
+      <div class="doctor-info">
+        <div class="doctor-name">Dr. Nadhem Belhadjali</div>
+        <div class="doctor-title">Radiology Specialist</div>
+      </div>
+    </div>
+  </div>
