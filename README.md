@@ -4,25 +4,11 @@ Xperay is a web application built with Angular that enables users to upload scan
 
 ## 🚀 Features
 
-- 📄 Upload scanned images or documents
-- 🧠 Extracts content using a Vision-Language Model
-- 📊 Generates detailed reports with summaries and highlights
-- 🖼️ Intuitive and responsive UI built with Angular
-- 🔒 Secure and lightweight – no data is stored after processing
+-  Upload scanned images or documents
+-  Extracts content using a Vision-Language Model
+-  Generates detailed reports 
+- Intuitive and responsive UI built with Angular
 
-## 📷 How It Works
-
-1. Upload a scan (image or PDF)
-2. The app sends it to a Vision-Language Model backend
-3. The model analyzes visual and textual content
-4. A structured, readable report is generated and displayed
-
-## 🛠️ Tech Stack
-
-- **Frontend**: Angular
-- **AI Model**: Vision-Language Model (VLM) API or service
-- **Styling**: Angular Material / SCSS (or your CSS framework)
-- **Build Tooling**: Angular CLI
 
 ## 📦 Installation
 
