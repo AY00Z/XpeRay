@@ -13,7 +13,7 @@ Xperay is a web application built with Angular that enables users to upload scan
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/xperay.git
+git clone https://github.com/AY00Z/xperay.git
 cd xperay
 npm install
 ng serve
